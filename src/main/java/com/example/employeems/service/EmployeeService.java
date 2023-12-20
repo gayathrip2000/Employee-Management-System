@@ -48,4 +48,12 @@ public class EmployeeService {
     }
 
 
+    public EmployeeDTO searchEmployee(int empID){
+            if(employeeRepo.existsById(empID)){
+                Employee employee =employeeRepo.findById(empID).orElse(null);
+                return modelMapper.map(employee,EmployeeDTO.class);
+            }else{
+                    return null;
+            }
+    }
 }
